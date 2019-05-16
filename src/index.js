@@ -1,18 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import{render} from 'react-dom'
+import App from './components/App'
 
-function Hey(props) {
-    return <h1>Hey, {props.name}</h1>;
-}
-
-const elem = <Hey name="Serh" />;
-ReactDOM.render(
-    elem,
-    document.getElementById('root')
-
-);
-
-
+render(<App/>, document.getElementById('root'));
