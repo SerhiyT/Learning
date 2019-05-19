@@ -1,22 +1,24 @@
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
 
 class Article extends Component {
+  constructor(props) {
+    super(props)
 
-  state = {
-    isOpen: true
+    this.state = {
+      count: 0
+    }
   }
-
   render() {
-    const { article } = this.props
-    const body = this.state.isOpen && <section className="card-text">{article.text}</section>
+    const { article, isOpen, onButtonClick } = this.props
+    const body = isOpen && <section className="card-text">{article.text}</section>
     const style = { width: '50%' }
     return (
       <div className="card" style={style}>
         <div className="card-header">
           <h2>
             {article.title}
-            <button onClick={this.handleClick} className="btn btn-primary float-right">
-              {this.state.isOpen ? 'Close' : 'Open'}
+            <button onClick={onButtonClick} className="btn btn-dark float-right">
+              {isOpen ? 'Close' : 'Open'}
             </button>
           </h2>
         </div>
@@ -29,11 +31,7 @@ class Article extends Component {
       </div>
     )
   }
-  handleClick = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    })
-  }
 }
+
 
 export default Article
